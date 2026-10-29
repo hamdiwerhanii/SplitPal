@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+*.log
+test/.e2e-server.log
+
+.env
+.env.*
+!.env.example

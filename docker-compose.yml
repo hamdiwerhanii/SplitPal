@@ -1,0 +1,35 @@
+services:
+  mongo:
+    image: mongo:8
+    ports:
+      - "27018:27017"
+    volumes:
+      - splitpal-mongo:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  backend:
+    profiles: ["app"]
+    build: ./backend
+    env_file: ./backend/.env
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/splitpal
+      MAIL_HOST: mailpit
+      MAIL_PORT: "1025"
+    ports:
+      - "5000:5000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+volumes:
+  splitpal-mongo:
