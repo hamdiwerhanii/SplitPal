@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: 246 247 249;
+  --color-surface: 255 255 255;
+  --color-surface-muted: 238 241 245;
+  --color-border: 226 232 240;
+  --color-foreground: 15 23 42;
+  --color-muted: 100 116 139;
+  --color-primary: 16 185 129;
+  --color-primary-soft: 209 250 229;
+  --color-positive: 5 150 105;
+  --color-negative: 220 38 38;
+  --color-warning: 217 119 6;
+}
+
+.dark:root {
+  --color-background: 11 18 32;
+  --color-surface: 19 28 46;
+  --color-surface-muted: 28 39 61;
+  --color-border: 39 52 77;
+  --color-foreground: 241 245 249;
+  --color-muted: 148 163 184;
+  --color-primary: 52 211 153;
+  --color-primary-soft: 6 78 59;
+  --color-positive: 52 211 153;
+  --color-negative: 248 113 113;
+  --color-warning: 251 191 36;
+}
+
+@layer components {
+  .h1 {
+    @apply text-foreground font-bold text-[28px];
+  }
+
+  .p {
+    @apply text-muted text-base;
+  }
+
+  .label {
+    @apply text-muted text-sm font-medium;
+  }
+}

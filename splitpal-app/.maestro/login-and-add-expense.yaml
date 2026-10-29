@@ -1,0 +1,34 @@
+appId: com.splitpal.app
+env:
+  EMAIL: ahmed@splitpal.test
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "get-started"
+- tapOn:
+    id: "email-input"
+- inputText: ${EMAIL}
+- tapOn:
+    id: "send-code"
+- assertVisible:
+    id: "otp-input"
+- inputText: ${OTP_CODE}
+- assertVisible:
+    id: "group-card-Tozeur Trip"
+- tapOn:
+    id: "group-card-Tozeur Trip"
+- tapOn:
+    id: "add-expense"
+- tapOn:
+    id: "expense-amount-input"
+- inputText: "45.5"
+- tapOn:
+    id: "expense-description-input"
+- inputText: "Dates souvenir"
+- tapOn:
+    id: "submit-expense"
+- assertVisible: "Dates souvenir"
+- tapOn:
+    id: "open-settle-up"
+- assertVisible: "Mark as paid"
